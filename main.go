@@ -26,7 +26,6 @@ type AverageExecutionTime struct {
 var aet AverageExecutionTime = AverageExecutionTime{primET: 0, kruskalET: 0, boruvkaET: 0}
 
 func main() {
-	// "graphs.txt" 5:50 pm
 	file, err := os.Open(os.Args[1])
 	if err != nil {
 		fmt.Println(err)
