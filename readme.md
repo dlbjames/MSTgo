@@ -18,9 +18,13 @@ e0 1 2 3 4 ... edges - first edge with numOfEdges edges
 
 Ex:
 > 1
+
 > 3
+
 > 0 1 2
+
 > 1 0 0
+
 > 2 0 0
 
 ### Working on
