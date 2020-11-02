@@ -1,6 +1,11 @@
 # 343 Programming Project - Minimum Spanning Tree Implementations
+
+<p align="center"><img src="images/firstRun.png" height="400"></p>
+
 A programming project for an Algorithms class where I decided to implement 3 different Minimum Spanning Tree implementations.
 The goal here was to compare the execution times, the graphs at each step, the end result graph, and show which graphs are better in which situtation.
+
+<!-- ![Example Image of MSTgo output](images/firstRun.png) -->
 
 ## Version
 > **Go 1.14.3**
@@ -10,6 +15,7 @@ In the folder with main.go run the command:
 > **go run main.go graphs.txt**
 
 Where graphs.txt is the name of the file containing the graphs to run the algorithms on.
+> Include the file path if your file is not in the same directory as main.go
 
 ## File format
 **n** - number of graphs
