@@ -5,8 +5,6 @@
 A programming project for an Algorithms class where I decided to implement 3 different Minimum Spanning Tree implementations.
 The goal here was to compare the execution times, the graphs at each step, the end result graph, and show which graphs are better in which situtation.
 
-<!-- ![Example Image of MSTgo output](images/firstRun.png) -->
-
 ## Version
 > **Go 1.14.3**
 
@@ -18,9 +16,11 @@ Where graphs.txt is the name of the file containing the graphs to run the algori
 > Include the file path if your file is not in the same directory as main.go
 
 ## File format
-**n** - number of graphs
-**numOfEdges** - number of edges in each graph
-e0 1 2 3 4 ... edges - first edge with numOfEdges edges
+> **n** - number of graphs
+
+> **numOfEdges** - number of edges in each graph
+
+> e0 1 2 3 4 ... edges - first edge with numOfEdges edges
 
 Ex:
 > 1
