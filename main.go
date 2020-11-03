@@ -39,7 +39,7 @@ func main() {
 
 	for sc.Scan() {
 		numberOfGraphs, _ := strconv.Atoi(sc.Text())
-		count := 1
+		currentGraphIteration := 1
 		aet.totalGraphs = int64(numberOfGraphs)
 		sc.Scan()
 
@@ -62,11 +62,11 @@ func main() {
 				index++
 			}
 
-			printAlgorithms(numOfVerticies, count, seen, graph)
+			printAlgorithms(numOfVerticies, currentGraphIteration, seen, graph)
 
 			// Run tests on the next graph
+			currentGraphIteration++
 			numberOfGraphs--
-			count++
 		}
 	}
 
@@ -83,11 +83,11 @@ func main() {
 
 func printAlgorithms(numOfVerticies, count int, seen []bool, graph [][]int) {
 	// Set up and run the different algorithms
-
+	fmt.Printf("Graph #%d\n\n", count)
 	start := time.Now()
 	prims := algo.Prims{Verticies: numOfVerticies, Seen: seen, Graph: graph}
 
-	fmt.Printf("Prim's Algorithm #%d\n", count)
+	fmt.Printf("Prim's Algorithm\n")
 	fmt.Println("Edges | Cost")
 	prims.Construct()
 
@@ -100,7 +100,7 @@ func printAlgorithms(numOfVerticies, count int, seen []bool, graph [][]int) {
 	start = time.Now()
 	kruskals := algo.Kruskals{Verticies: numOfVerticies, Graph: graph}
 
-	fmt.Printf("Kruskal's Algorithm #%d\n", count)
+	fmt.Printf("Kruskal's Algorithm\n")
 	fmt.Println("Edges | Cost")
 	kruskals.Construct()
 
@@ -111,7 +111,7 @@ func printAlgorithms(numOfVerticies, count int, seen []bool, graph [][]int) {
 	fmt.Println()
 
 	boruvkas := algo.Boruvkas{Verticies: numOfVerticies, Graph: graph}
-	fmt.Printf("Boruvka's Algorithm #%d\n", count)
+	fmt.Printf("Boruvka's Algorithm\n")
 	fmt.Println("Edges | Cost")
 	boruvkas.Construct()
 

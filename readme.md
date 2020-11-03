@@ -20,7 +20,7 @@ Where graphs.txt is the name of the file containing the graphs to run the algori
 
 > **numOfEdges** - number of edges in each graph
 
-> e0 1 2 3 4 ... edges - first edge with numOfEdges edges
+> e0 1 2 3 4 ... edges - first edge with numOfEdges edges where the values are the cost for that connection e0 - e2 costs 2
 
 Ex:
 > 1
@@ -37,11 +37,11 @@ Ex:
 - [ ] Write the paper for a grade :]
 - [ ] Better Displaying System
 - [ ] Showing the Graphs at each step
-- [ ] Adding more test graphs / graph variants
+- [ ] Adding more test graphs / graph variants (Have 3 would like 6 - 10 different graphs)
 - [X] Showing execution times for each algorithm plus average execution time
 - [X] Reading from any file through the command line
 - [X] Implement Boruvka's Algorithm
-- [X] Implement Kruskal's Algorithm
+- [X] Implement Kruskal's Algorithm (only works with completely connected graphs)
 - [X] Implement a Disjoint Set Union using size / rank
 - [X] Implement Prim's Algorithm
 
@@ -75,3 +75,6 @@ Prim's Algorithm:
 Boruvka's Algorithm: (The point where the fun stopped)
     https://en.wikipedia.org/wiki/Bor%C5%AFvka%27s_algorithm
     http://www-student.cse.buffalo.edu/~atri/cse331/fall16/recitations/Recitation10.pdf
+
+Why do Kruskal and Prim MST algorithms have different runtimes for sparse and dense graphs?
+    https://stackoverflow.com/questions/2011753/why-do-kruskal-and-prim-mst-algorithms-have-different-runtimes-for-sparse-and-de
