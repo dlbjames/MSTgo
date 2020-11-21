@@ -1,6 +1,6 @@
 # 343 Programming Project - Minimum Spanning Tree Implementations
 
-<p align="center"><img src="images/firstRun.png" height="400"></p>
+<p align="center"><img src="images/updatedRun.png" height="400"></p>
 
 A programming project for an Algorithms class where I decided to implement 3 different Minimum Spanning Tree implementations.
 The goal here was to compare the execution times, the graphs at each step, the end result graph, and show which graphs are better in which situtation.

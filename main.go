@@ -68,6 +68,10 @@ func main() {
 			currentGraphIteration++
 			numberOfGraphs--
 		}
+
+		if numberOfGraphs == 0 {
+			break
+		}
 	}
 
 	fmt.Println("Algorithm | Average Execution Time (in µs)")
