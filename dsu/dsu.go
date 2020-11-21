@@ -6,12 +6,13 @@ package dsu
 // As such there is heavy inspiration from here:
 //	https://cp-algorithms.com/data_structures/disjoint_set_union.html
 
-// Subset - Determines which edges are in the same subset and who their parents are
+// Subset - Object
+//	Contains the Parent and the number of Children for a subset
 type Subset struct {
 	Parent, Children int
 }
 
-// Find returns a nodes parent / source node
+// Find - returns a nodes parent / source node
 func Find(subsets []Subset, i int) int {
 	if subsets[i].Parent != i {
 		subsets[i].Parent = Find(subsets, subsets[i].Parent)
@@ -33,5 +34,4 @@ func Union(subsets []Subset, x, y int) {
 		subsets[yroot].Parent = xroot
 		subsets[xroot].Children++
 	}
-
 }

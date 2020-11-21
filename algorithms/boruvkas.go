@@ -3,22 +3,23 @@ package algorithms
 import (
 	"fmt"
 	"graphs/dsu"
-	node "graphs/nodes"
+	edge "graphs/edge"
 )
 
-// Boruvkas object
+// Boruvkas - Object
+//	Contains the number of verticies in the graph
+//	and the edges which make up the graph
 type Boruvkas struct {
 	Verticies int
-	Graph     [][]int
+	Edges     []edge.Edge
 }
 
 // Construct the MST for Boruvkas Algorithm
 func (b Boruvkas) Construct() {
 
 	// 1 - Initialize a Forest
-	forest := make([]node.Nodes, b.Verticies-1)
+	forest := make([]edge.Edge, b.Verticies-1)
 	subset := make([]dsu.Subset, b.Verticies)
-	edges := makeGraph(b.Graph, b.Verticies)
 	cheapest := make([]int, b.Verticies)
 
 	// Set all trees in the forest to single components
@@ -33,7 +34,7 @@ func (b Boruvkas) Construct() {
 
 	// While we have more than 1 forest
 	for numOfForests > 1 {
-		if pass > len(edges) {
+		if pass > len(b.Edges) {
 			break
 		}
 
@@ -43,9 +44,9 @@ func (b Boruvkas) Construct() {
 		}
 
 		// Traverse and update the cheapest for each edge
-		for i := range edges {
-			u := dsu.Find(subset, edges[i].Src)
-			v := dsu.Find(subset, edges[i].Dest)
+		for i := range b.Edges {
+			u := dsu.Find(subset, b.Edges[i].Src)
+			v := dsu.Find(subset, b.Edges[i].Dest)
 
 			// If edge u and v are in the same component already
 			if u == v {
@@ -56,12 +57,12 @@ func (b Boruvkas) Construct() {
 			cheapV := cheapest[v]
 
 			// Check if this node is cheaper than previous nodes
-			if cheapU == -1 || edges[cheapU].Cost > edges[i].Cost {
+			if cheapU == -1 || b.Edges[cheapU].Cost > b.Edges[i].Cost {
 				cheapest[u] = i
 			}
 
 			// Check if there are cheaper nodes for this edge
-			if cheapV == -1 || edges[cheapV].Cost > edges[i].Cost {
+			if cheapV == -1 || b.Edges[cheapV].Cost > b.Edges[i].Cost {
 				cheapest[v] = i
 			}
 		}
@@ -71,8 +72,8 @@ func (b Boruvkas) Construct() {
 
 			// If there is a path to the node at i
 			if cheapest[i] != -1 {
-				u := dsu.Find(subset, edges[cheapest[i]].Src)
-				v := dsu.Find(subset, edges[cheapest[i]].Dest)
+				u := dsu.Find(subset, b.Edges[cheapest[i]].Src)
+				v := dsu.Find(subset, b.Edges[cheapest[i]].Dest)
 
 				// check if the nodes are already in the same component
 				if u == v {
@@ -80,7 +81,7 @@ func (b Boruvkas) Construct() {
 				}
 
 				// Add the edges to the forest
-				forest[index] = edges[cheapest[i]]
+				forest[index] = b.Edges[cheapest[i]]
 
 				// Merge the 2 components
 				dsu.Union(subset, u, v)
@@ -96,5 +97,4 @@ func (b Boruvkas) Construct() {
 	for _, anEdge := range forest {
 		fmt.Printf("%d - %d | %d\n", anEdge.Src, anEdge.Dest, anEdge.Cost)
 	}
-
 }

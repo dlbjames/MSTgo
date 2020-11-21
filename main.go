@@ -10,12 +10,13 @@ import (
 	"bufio"
 	"fmt"
 	algo "graphs/algorithms"
+	edge "graphs/edge"
 	"os"
 	"strconv"
 	"time"
 )
 
-// AverageExecutionTime The average execution time
+// AverageExecutionTime - The average execution time for each algorithm
 type AverageExecutionTime struct {
 	primET      time.Duration
 	kruskalET   time.Duration
@@ -69,6 +70,8 @@ func main() {
 			numberOfGraphs--
 		}
 
+		// This is used in the case where not all of the test cases
+		// in a file need to be read in
 		if numberOfGraphs == 0 {
 			break
 		}
@@ -85,7 +88,12 @@ func main() {
 	}
 }
 
+// printAlgorithms - prints the algorithms to the console
+//	Arguments: the number of verticies, the current graph iteration, a visited array, and the graph
 func printAlgorithms(numOfVerticies, count int, seen []bool, graph [][]int) {
+	// The list of edges for Kruskal's and Boruvka's algorithms
+	edges := edge.MakeEdges(graph, numOfVerticies)
+
 	// Set up and run the different algorithms
 	fmt.Printf("Graph #%d\n\n", count)
 	start := time.Now()
@@ -97,12 +105,10 @@ func printAlgorithms(numOfVerticies, count int, seen []bool, graph [][]int) {
 
 	elapsed := time.Since(start)
 	aet.primET += elapsed
-
-	fmt.Printf("Execution Time: %s\n", elapsed)
-	fmt.Println()
+	printExecutionTimes(elapsed)
 
 	start = time.Now()
-	kruskals := algo.Kruskals{Verticies: numOfVerticies, Graph: graph}
+	kruskals := algo.Kruskals{Verticies: numOfVerticies, Edges: edges}
 
 	fmt.Printf("Kruskal's\n")
 	fmt.Println("Edges | Cost")
@@ -110,18 +116,23 @@ func printAlgorithms(numOfVerticies, count int, seen []bool, graph [][]int) {
 
 	elapsed = time.Since(start)
 	aet.kruskalET += elapsed
+	printExecutionTimes(elapsed)
 
-	fmt.Printf("Execution Time: %s\n", elapsed)
-	fmt.Println()
+	start = time.Now()
+	boruvkas := algo.Boruvkas{Verticies: numOfVerticies, Edges: edges}
 
-	boruvkas := algo.Boruvkas{Verticies: numOfVerticies, Graph: graph}
 	fmt.Printf("Boruvka's\n")
 	fmt.Println("Edges | Cost")
 	boruvkas.Construct()
 
 	elapsed = time.Since(start)
 	aet.boruvkaET += elapsed
+	printExecutionTimes(elapsed)
+}
 
-	fmt.Printf("Execution Time: %s\n", elapsed)
+// printExecutionTimes - prints the execution time to complete an algorithm on a graph
+//	Arguments: the duration it took an algorithm to run and complete
+func printExecutionTimes(elapsedTime time.Duration) {
+	fmt.Printf("Execution Time: %s\n", elapsedTime)
 	fmt.Println()
 }

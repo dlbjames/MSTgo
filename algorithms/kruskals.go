@@ -3,61 +3,43 @@ package algorithms
 import (
 	"fmt"
 	dsu "graphs/dsu"
-	node "graphs/nodes"
+	edge "graphs/edge"
 	"sort"
 )
 
-// Kruskals object
+// Kruskals - Object
+//	Contains the number of Verticies in the graph,
+//	and the edges which make up the graph
 type Kruskals struct {
 	Verticies int
-	Graph     [][]int
-}
-
-// MakeGraph - makes the list of edges from the adjacency matrix
-func makeGraph(graph [][]int, numOfVerticies int) []node.Nodes {
-	index := 0
-	edges := make([]node.Nodes, 0)
-	for i := 0; i < numOfVerticies; i++ {
-		for j := 0; j < numOfVerticies; j++ {
-			// If no nodes were allowed to be 0
-			//		use this: i*k.Verticies + j for each index
-			// 0 means there is no edge between 2 nodes
-			if graph[i][j] != 0 {
-				edges = append(edges, node.Nodes{Src: i, Dest: j, Cost: graph[i][j]})
-				index++
-			}
-		}
-	}
-
-	return edges
+	Edges     []edge.Edge
 }
 
 // Construct the minimum spanning tree for this instances graph
 // The main algorithm for Kruskal's Source:
 //	https://en.wikipedia.org/wiki/Kruskal%27s_algorithm
 func (k Kruskals) Construct() {
-	edges := makeGraph(k.Graph, k.Verticies)
 	index := 0
 
 	// Sorting Reference found here:
 	//	https://golangdocs.com/golang-sort-package
-	sort.Sort(node.Edges(edges))
+	sort.Sort(edge.Edges(k.Edges))
 
 	subsets := make([]dsu.Subset, k.Verticies)
 	for i := 0; i < k.Verticies; i++ {
 		subsets[i] = dsu.Subset{Parent: i, Children: 0}
 	}
 
-	result := make([]node.Nodes, k.Verticies-1)
+	result := make([]edge.Edge, k.Verticies-1)
 	index = 0
 	i := 0
 
 	for index < k.Verticies-1 {
-		if i >= len(edges) {
+		if i >= len(k.Edges) {
 			break
 		}
 
-		next := edges[i]
+		next := k.Edges[i]
 		x := dsu.Find(subsets, next.Src)
 		y := dsu.Find(subsets, next.Dest)
 

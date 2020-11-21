@@ -5,7 +5,9 @@ import "fmt"
 // INF Constant for Infinite weight edges
 var INF int = 9999999
 
-// Prims The struct for Prims without a union find structure
+// Prims - Object
+//	Contains the number of edges and verticies, the graph as an adjacency matrix
+//	and a visited array of booleans
 type Prims struct {
 	Edges     int
 	Verticies int
@@ -13,7 +15,8 @@ type Prims struct {
 	Seen      []bool
 }
 
-// Construct the MST using Prim's algorithm
+// Construct the MST using the algorithm associated
+// with the algorithms/Object class
 func (p Prims) Construct() {
 	p.Seen[0] = true
 	p.Edges = 0
