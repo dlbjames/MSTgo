@@ -87,7 +87,7 @@ func printAlgorithms(numOfVerticies, count int, seen []bool, graph [][]int) {
 	start := time.Now()
 	prims := algo.Prims{Verticies: numOfVerticies, Seen: seen, Graph: graph}
 
-	fmt.Printf("Prim's Algorithm\n")
+	fmt.Printf("Prim's\n")
 	fmt.Println("Edges | Cost")
 	prims.Construct()
 
@@ -100,7 +100,7 @@ func printAlgorithms(numOfVerticies, count int, seen []bool, graph [][]int) {
 	start = time.Now()
 	kruskals := algo.Kruskals{Verticies: numOfVerticies, Graph: graph}
 
-	fmt.Printf("Kruskal's Algorithm\n")
+	fmt.Printf("Kruskal's\n")
 	fmt.Println("Edges | Cost")
 	kruskals.Construct()
 
@@ -111,7 +111,7 @@ func printAlgorithms(numOfVerticies, count int, seen []bool, graph [][]int) {
 	fmt.Println()
 
 	boruvkas := algo.Boruvkas{Verticies: numOfVerticies, Graph: graph}
-	fmt.Printf("Boruvka's Algorithm\n")
+	fmt.Printf("Boruvka's\n")
 	fmt.Println("Edges | Cost")
 	boruvkas.Construct()
 

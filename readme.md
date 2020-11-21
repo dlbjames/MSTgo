@@ -41,7 +41,7 @@ Ex:
 - [X] Showing execution times for each algorithm plus average execution time
 - [X] Reading from any file through the command line
 - [X] Implement Boruvka's Algorithm
-- [X] Implement Kruskal's Algorithm (only works with completely connected graphs)
+- [X] Implement Kruskal's Algorithm
 - [X] Implement a Disjoint Set Union using size / rank
 - [X] Implement Prim's Algorithm
 

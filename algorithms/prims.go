@@ -13,7 +13,7 @@ type Prims struct {
 	Seen      []bool
 }
 
-// Construct the MST
+// Construct the MST using Prim's algorithm
 func (p Prims) Construct() {
 	p.Seen[0] = true
 	p.Edges = 0

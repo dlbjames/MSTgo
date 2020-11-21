@@ -13,7 +13,7 @@ type Kruskals struct {
 	Graph     [][]int
 }
 
-// MakeGraph m
+// MakeGraph - makes the list of edges from the adjacency matrix
 func makeGraph(graph [][]int, numOfVerticies int) []node.Nodes {
 	index := 0
 	edges := make([]node.Nodes, 0)
@@ -53,6 +53,10 @@ func (k Kruskals) Construct() {
 	i := 0
 
 	for index < k.Verticies-1 {
+		if i >= len(edges) {
+			break
+		}
+
 		next := edges[i]
 		x := dsu.Find(subsets, next.Src)
 		y := dsu.Find(subsets, next.Dest)

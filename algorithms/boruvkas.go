@@ -12,7 +12,7 @@ type Boruvkas struct {
 	Graph     [][]int
 }
 
-// Construct c
+// Construct the MST for Boruvkas Algorithm
 func (b Boruvkas) Construct() {
 
 	// 1 - Initialize a Forest
@@ -29,9 +29,14 @@ func (b Boruvkas) Construct() {
 
 	numOfForests := b.Verticies
 	index := 0
+	pass := 0
 
 	// While we have more than 1 forest
 	for numOfForests > 1 {
+		if pass > len(edges) {
+			break
+		}
+
 		// Reinitialize cheapest array
 		for i := range cheapest {
 			cheapest[i] = -1
@@ -85,6 +90,7 @@ func (b Boruvkas) Construct() {
 				index++
 			}
 		}
+		pass++
 	}
 
 	for _, anEdge := range forest {
