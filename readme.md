@@ -37,7 +37,7 @@ Ex:
 - [ ] Write the paper for a grade :]
 - [ ] Better Displaying System
 - [ ] Showing the Graphs at each step
-- [ ] Adding more test graphs / graph variants (Have 3 would like 6 - 10 different graphs)
+- [X] Adding more test graphs / graph variants (Have 7)
 - [X] Showing execution times for each algorithm plus average execution time
 - [X] Reading from any file through the command line
 - [X] Implement Boruvka's Algorithm
